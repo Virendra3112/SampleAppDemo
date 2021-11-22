@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace SampleAppDemo.PageModels
@@ -31,6 +32,11 @@ namespace SampleAppDemo.PageModels
             {
                 return _scanId;
             }
+            set
+            {
+                _scanId = value;
+                RaisePropertyChanged();
+            }
         }
         public ICommand ScanCommand { get; set; }
 
@@ -47,12 +53,22 @@ namespace SampleAppDemo.PageModels
 
             ScanList = new ObservableCollection<ScanModel>();
 
-            ScanList.Add(new ScanModel { IsChecked = false, Name = "First" });
-            ScanList.Add(new ScanModel { IsChecked = false, Name = "Second" });
-            ScanList.Add(new ScanModel { IsChecked = false, Name = "third" });
-            
+            //ScanList.Add(new ScanModel { IsChecked = false, Name = "First" });
+            //ScanList.Add(new ScanModel { IsChecked = false, Name = "Second" });
+            //ScanList.Add(new ScanModel { IsChecked = false, Name = "third" });
+
             //todo: get data from db
             var _list = _sQLiteService.GetAllItems();
+        }
+
+        public async Task GetData()
+        {
+            var _list = await _sQLiteService.GetAllItems();
+        } 
+        
+        public async Task AddData()
+        {
+            await _sQLiteService.CreateItem(new ScanModel());
         }
 
     }
