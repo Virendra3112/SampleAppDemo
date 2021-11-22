@@ -12,7 +12,8 @@
             <StackLayout Grid.Row="0" BackgroundColor="Yellow"
                          Padding="0" Margin="0" Spacing="0" Orientation="Horizontal"
                           >
-                <Entry HorizontalOptions="FillAndExpand" Placeholder="Enter ID/Scan ID"/>
+                <Entry HorizontalOptions="FillAndExpand" Placeholder="Enter ID/Scan ID"
+                       Text="{Binding ScanId}"/>
 
                 <Button HorizontalOptions="EndAndExpand" Text="Scan"/>
 
