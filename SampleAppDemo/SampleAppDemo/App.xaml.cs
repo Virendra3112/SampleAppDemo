@@ -1,8 +1,6 @@
 ﻿using FreshMvvm;
 using SampleAppDemo.PageModels;
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SampleAppDemo
 {

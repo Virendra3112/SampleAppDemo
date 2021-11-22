@@ -52,20 +52,25 @@ namespace SampleAppDemo.PageModels
             base.ViewIsAppearing(sender, e);
 
             ScanList = new ObservableCollection<ScanModel>();
-
+            GetData();
             //ScanList.Add(new ScanModel { IsChecked = false, Name = "First" });
             //ScanList.Add(new ScanModel { IsChecked = false, Name = "Second" });
             //ScanList.Add(new ScanModel { IsChecked = false, Name = "third" });
-
-            //todo: get data from db
-            var _list = _sQLiteService.GetAllItems();
         }
 
         public async Task GetData()
         {
-            var _list = await _sQLiteService.GetAllItems();
-        } 
-        
+            try
+            {
+                //todo: get data from db
+                var _list = await _sQLiteService.GetAllItems();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public async Task AddData()
         {
             await _sQLiteService.CreateItem(new ScanModel());
