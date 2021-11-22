@@ -3,10 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SampleAppDemo.Pages.ScanPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Scan Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="0" ColumnSpacing="0" Padding="0" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" BackgroundColor="Yellow"
+                         Padding="0" Margin="0" Spacing="0" Orientation="Horizontal"
+                          >
+                <Entry HorizontalOptions="FillAndExpand" Placeholder="Enter ID/Scan ID"/>
+
+                <Button HorizontalOptions="EndAndExpand" Text="Scan"/>
+
+            </StackLayout>
+            <StackLayout Grid.Row="1" Padding="10" Margin="10" Spacing="0"
+                BindableLayout.ItemsSource="{Binding ScanList}" BackgroundColor="LightGray">
+                <BindableLayout.EmptyView>
+                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        <Label Text="No data available"
+                       FontAttributes="Italic"
+                       FontSize="Medium" />
+                    </StackLayout>
+                </BindableLayout.EmptyView>
+
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}" TextColor="Black"
+                                   FontSize="Large" HorizontalOptions="StartAndExpand"
+                                   HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                            <CheckBox HorizontalOptions="EndAndExpand" IsChecked="{Binding IsChecked}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
