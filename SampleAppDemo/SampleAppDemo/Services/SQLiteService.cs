@@ -18,7 +18,7 @@ namespace SampleAppDemo.Services
             sQLiteAsyncConnection.CreateTableAsync<ScanModel>().Wait();
         }
 
-        public async Task CreateItem(ScanModel item)
+        public async Task InsertData(ScanModel item)
         {
             try
             {
@@ -40,5 +40,19 @@ namespace SampleAppDemo.Services
         {
             return sQLiteAsyncConnection.Table<ScanModel>().ToListAsync();
         }
+
+        public async Task DeleteData(ScanModel item)
+        {
+            try
+            {
+                var result = await sQLiteAsyncConnection.DeleteAsync(item).ConfigureAwait(continueOnCapturedContext: false);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
     }
 }
