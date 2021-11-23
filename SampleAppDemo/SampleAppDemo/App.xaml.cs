@@ -14,7 +14,7 @@ namespace SampleAppDemo
             tabbedNavigation.AddTab<ScanPageModel>("Scan", null);
             tabbedNavigation.AddTab<ValidatePageModel>("Validate", null);
             tabbedNavigation.AddTab<SyncPageModel>("Sync", null);
-            MainPage = tabbedNavigation;
+            MainPage = new NavigationPage(tabbedNavigation);
         }
 
         protected override void OnStart()
