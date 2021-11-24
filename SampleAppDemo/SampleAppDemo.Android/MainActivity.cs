@@ -23,6 +23,7 @@ namespace SampleAppDemo.Droid
             var repository = new SQLiteService(DBPath_Android.GetDatabasePath("sample.db3"));
             FreshIOC.Container.Register(repository);
 
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
